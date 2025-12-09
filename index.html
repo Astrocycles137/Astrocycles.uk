@@ -6,7 +6,7 @@
   <title>AstroCycles — Private, Offline & Free on Google Play</title>
   <meta
     name="description"
-    content="AstroCycles runs an on-device celestial engine aligned to your natal data. Private. Offline. Free on Google Play."
+    content="AstroCycles blends astronomy-grade timing with astrology, tarot and journaling so you can explore your cycles, relationships and retrogrades — privately, offline, on your device."
   />
   <meta name="theme-color" content="#0a0716" />
 
@@ -14,7 +14,7 @@
   <meta property="og:title" content="AstroCycles — Private, Offline & Free" />
   <meta
     property="og:description"
-    content="On-device celestial engine with phases, transits & tarot. Private. Offline. Free on Google Play."
+    content="On-device celestial engine with phases, transits, tarot, horoscopes, retrogrades, compatibility & journaling. Private. Offline. Free on Google Play."
   />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./assets/og-card.png" />
@@ -33,11 +33,14 @@
     :root {
       --bg: #070612;
       --panel: rgba(18, 16, 36, 0.92);
+      --panel-soft: rgba(18, 16, 36, 0.96);
       --ink: #f2f1ff;
       --muted: #c8c4ff;
       --border: rgba(167, 139, 250, 0.22);
+      --border-soft: rgba(167, 139, 250, 0.16);
       --ring: rgba(167, 139, 250, 0.45);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --pill-bg: rgba(130, 108, 255, 0.16);
     }
 
     /* Base */
@@ -95,20 +98,20 @@
       z-index: -1;
     }
 
-    /* Center card */
+    /* Layout */
     .center {
       min-height: 100%;
       display: grid;
       place-items: center;
-      padding: 24px;
+      padding: 24px 16px 64px;
     }
     .card {
-      width: min(680px, 92vw);
+      width: min(960px, 100%);
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 20px 20px 24px;
-      text-align: center;
+      text-align: left;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
@@ -119,7 +122,7 @@
       pointer-events: none;
       mix-blend-mode: screen;
       filter: blur(30px);
-      opacity: 0.6;
+      opacity: 0.55;
       background:
         radial-gradient(
           45% 40% at 55% 30%,
@@ -131,31 +134,97 @@
           rgba(120, 200, 255, 0.25),
           transparent 70%
         );
+      z-index: 0;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .logo-title-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 4px;
     }
     .logo {
       width: 56px;
       height: 56px;
       border-radius: 12px;
-      margin: 0 auto 10px;
       filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.35));
     }
     .title {
       font-family: "Cinzel Decorative", serif;
       font-weight: 700;
       letter-spacing: 0.06em;
-      margin: 0.1rem 0 0.25rem;
-      font-size: clamp(1.4rem, 4.2vw, 2rem);
+      margin: 0;
+      font-size: clamp(1.4rem, 4vw, 2.1rem);
     }
-    .sub {
-      opacity: 0.88;
-      margin: 0 0 12px;
+    .hero-kickers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 6px 0 10px;
     }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--pill-bg);
+      border: 1px solid var(--border-soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .sub-headline {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.4;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .hero-highlights span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      background: rgba(10, 8, 32, 0.9);
+    }
+
     .actions {
       display: flex;
       gap: 10px;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-top: 12px;
+      margin-top: 6px;
     }
 
     .btn {
@@ -170,36 +239,182 @@
       justify-content: center;
       background: linear-gradient(
         180deg,
-        rgba(167, 139, 250, 0.22),
+        rgba(167, 139, 250, 0.25),
         rgba(167, 139, 250, 0.08)
       );
       box-shadow: var(--shadow);
       transition:
         transform 0.08s ease,
         box-shadow 0.2s ease,
-        border-color 0.2s ease;
+        border-color 0.2s ease,
+        background 0.2s ease;
+      font-size: 0.92rem;
+      text-transform: uppercase;
     }
     .btn:hover {
       box-shadow: 0 0 0 4px var(--ring), 0 14px 30px rgba(0, 0, 0, 0.35);
       border-color: rgba(167, 139, 250, 0.48);
+      transform: translateY(-1px);
+      background: linear-gradient(
+        180deg,
+        rgba(189, 167, 255, 0.4),
+        rgba(167, 139, 250, 0.12)
+      );
     }
     .btn:active {
       transform: translateY(1px);
     }
+    .btn-secondary {
+      background: rgba(12, 9, 32, 0.9);
+      font-weight: 600;
+      text-transform: none;
+    }
 
+    .qr-panel {
+      background: var(--panel-soft);
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 14px 14px 12px;
+      text-align: center;
+    }
     .qr {
       width: min(56vw, 220px);
       aspect-ratio: 1/1;
       background: #fff;
-      border-radius: 14px;
-      padding: 14px;
+      border-radius: 12px;
+      padding: 12px;
       border: 1px solid var(--border);
       image-rendering: pixelated;
-      margin: 10px auto 6px;
+      margin: 0 auto 8px;
     }
     .caption {
       opacity: 0.82;
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+    .tiny-note {
+      font-size: 0.75rem;
+      color: rgba(200, 196, 255, 0.75);
+    }
+
+    /* Sections */
+    .sections {
+      margin-top: 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(167, 139, 250, 0.18);
+      background: radial-gradient(
+          circle at top left,
+          rgba(147, 112, 255, 0.14),
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(88, 196, 255, 0.12),
+          transparent 60%
+        ),
+        linear-gradient(135deg, rgba(7, 6, 24, 0.95), rgba(12, 8, 31, 0.98));
+      padding: 16px 16px 14px;
+    }
+
+    .section-header {
+      margin-bottom: 10px;
+    }
+    .section-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(200, 196, 255, 0.8);
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+    .section-intro {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 56rem;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 720px) {
+      .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .feature-block {
+      border-radius: 12px;
+      border: 1px solid rgba(167, 139, 250, 0.22);
+      background: rgba(8, 7, 26, 0.96);
+      padding: 10px 11px 10px;
+    }
+    .feature-title {
       font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .feature-title span.emoji {
+      font-size: 1.05rem;
+    }
+    .feature-text {
+      margin: 0 0 4px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+    .feature-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .feature-list li {
+      margin-bottom: 3px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: rgba(200, 196, 255, 0.9);
+    }
+    .tag {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(122, 230, 255, 0.45);
+      background: rgba(5, 16, 28, 0.95);
+    }
+
+    .who-for {
+      margin-top: 14px;
+      border-radius: 12px;
+      border: 1px dashed rgba(167, 139, 250, 0.4);
+      padding: 10px 11px 9px;
+      background: rgba(8, 7, 26, 0.9);
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .who-for strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .data-line {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: rgba(200, 196, 255, 0.7);
     }
 
     footer {
@@ -213,6 +428,12 @@
       gap: 14px;
       font-size: 0.95rem;
       color: var(--muted);
+      backdrop-filter: blur(10px);
+      background: linear-gradient(
+        180deg,
+        rgba(3, 3, 16, 0),
+        rgba(3, 3, 16, 0.92)
+      );
     }
     footer a {
       color: var(--muted);
@@ -245,45 +466,244 @@
   <div class="vignette" aria-hidden="true"></div>
 
   <main class="center">
-    <section class="card" aria-label="Get AstroCycles">
+    <section class="card" aria-label="AstroCycles app overview">
       <div class="aura" aria-hidden="true"></div>
 
-      <img
-        class="logo"
-        src="./assets/icon-nobg.png"
-        alt="AstroCycles logo"
-        width="56"
-        height="56"
-      />
-      <h1 class="title">AstroCycles</h1>
-      <p class="sub">Private • Offline • Natal-aligned</p>
+      <div class="card-inner">
+        <!-- HERO -->
+        <div class="hero">
+          <div>
+            <div class="logo-title-row">
+              <img
+                class="logo"
+                src="./assets/icon-nobg.png"
+                alt="AstroCycles logo"
+                width="56"
+                height="56"
+              />
+              <div>
+                <h1 class="title">AstroCycles</h1>
+                <p class="sub-headline">
+                  Personalized astrology, tarot, retrogrades & compatibility — calculated fully offline on your device.
+                </p>
+              </div>
+            </div>
 
-      <a
-        class="btn"
-        href="https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
-        target="_blank"
-        rel="noopener"
-        aria-label="Open AstroCycles on Google Play"
-      >
-        Get it on Google Play
-      </a>
+            <div class="hero-kickers">
+              <span class="pill">Private by design</span>
+              <span class="pill">Runs offline</span>
+              <span class="pill">No paywalls</span>
+            </div>
 
-      <a
-        href="https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
-        target="_blank"
-        rel="noopener"
-        aria-label="Scan QR to open on Google Play"
-      >
-        <img
-          class="qr"
-          src="./assets/astrocyclesQR.png"
-          alt="Scan to open AstroCycles on Google Play"
-          loading="eager"
-          decoding="async"
-        />
-      </a>
+            <div class="hero-highlights">
+              <span><strong>✨</strong> Daily horoscopes from your actual chart</span>
+              <span><strong>🌙</strong> New-Moon intentions & lunar cycles</span>
+              <span><strong>🃏</strong> 78-card tarot pulls (upright & reversed)</span>
+              <span><strong>❤️</strong> Partner compatibility & synastry score</span>
+            </div>
 
-      <div class="caption">Scan to go to Google Play</div>
+            <div class="actions">
+              <a
+                class="btn"
+                href="https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open AstroCycles on Google Play"
+              >
+                Get it on Google Play
+              </a>
+
+              <a
+                class="btn btn-secondary"
+                href="#features"
+              >
+                Explore features
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div class="qr-panel">
+              <a
+                href="https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
+                target="_blank"
+                rel="noopener"
+                aria-label="Scan QR to open AstroCycles on Google Play"
+              >
+                <img
+                  class="qr"
+                  src="./assets/astrocyclesQR.png"
+                  alt="Scan to open AstroCycles on Google Play"
+                  loading="eager"
+                  decoding="async"
+                />
+              </a>
+              <div class="caption">Scan to go to Google Play</div>
+              <div class="tiny-note">Android · Free · Contains ads</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FEATURE SECTIONS -->
+        <div class="sections" id="features">
+          <header class="section-header">
+            <div class="section-eyebrow">What’s inside</div>
+            <h2 class="section-title">A celestial toolkit built around your real chart</h2>
+            <p class="section-intro">
+              AstroCycles blends astronomy-grade timing with intuitive astrology so you can track phases, retrogrades,
+              tarot pulls and relationship patterns through time — without handing your data to a server.
+            </p>
+          </header>
+
+          <div class="section-grid">
+            <!-- Engine -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">🪐</span>
+                Live astronomy engine (offline)
+              </h3>
+              <p class="feature-text">
+                A local ephemeris runs directly on your device — no astrology APIs, no accounts, no cloud.
+              </p>
+              <ul class="feature-list">
+                <li>Real-time Moon phase, rise/set, Sun position & planetary transits.</li>
+                <li>See which planets are above the horizon right now.</li>
+                <li>Optional approximate location for timing (never stored or shared).</li>
+                <li>Works fully offline once your natal details are set.</li>
+              </ul>
+            </article>
+
+            <!-- New Moon -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">🌙</span>
+                New-Moon intention tracking
+              </h3>
+              <p class="feature-text">
+                Turn each New Moon into a focused cycle instead of a one-night ritual.
+              </p>
+              <ul class="feature-list">
+                <li>Set a clear intention inside the app.</li>
+                <li>Optional daily nudges to stay connected to your goal.</li>
+                <li>Follow the whole lunation and watch momentum build.</li>
+              </ul>
+            </article>
+
+            <!-- Natal & transits -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">♓</span>
+                Personal natal astrology & transits
+              </h3>
+              <p class="feature-text">
+                Everything centers on your own birth chart — not generic Sun-sign blurbs.
+              </p>
+              <ul class="feature-list">
+                <li>Chart calculated from your date, time and place of birth.</li>
+                <li>Daily aspects linked back to your placements.</li>
+                <li>Transits mapped directly onto your chart for context.</li>
+              </ul>
+            </article>
+
+            <!-- Notifs / retrogrades -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">📲</span>
+                Transits, retrogrades & alerts
+              </h3>
+              <p class="feature-text">
+                Opt in to quiet, purposeful notifications that actually matter.
+              </p>
+              <ul class="feature-list">
+                <li>Zodiac sign ingress alerts for the Sun and Moon.</li>
+                <li>Retrograde start / end reminders for key planets.</li>
+                <li>Optional prompts aligned to your natal placements.</li>
+              </ul>
+            </article>
+
+            <!-- Tarot -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">🃏</span>
+                Daily tarot pulls
+              </h3>
+              <p class="feature-text">
+                Use tarot as a reflective layer on top of your cycles.
+              </p>
+              <ul class="feature-list">
+                <li>Pull up to 5 cards per day.</li>
+                <li>Full 78-card Major & Minor Arcana, upright & reversed.</li>
+              </ul>
+            </article>
+
+            <!-- Horoscope -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">📖</span>
+                Chart-based daily horoscope
+              </h3>
+              <p class="feature-text">
+                A daily read grounded in your active transits — not copy-pasted clichés.
+              </p>
+              <ul class="feature-list">
+                <li>Focus on the planets actually touching your chart today.</li>
+                <li>Plain-language guidance you can act on.</li>
+              </ul>
+            </article>
+
+            <!-- Compatibility -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">❤️</span>
+                Relationship compatibility
+              </h3>
+              <p class="feature-text">
+                Compare charts and see where things feel easy — and where they run hot.
+              </p>
+              <ul class="feature-list">
+                <li>Partner chart comparison with synastry overview.</li>
+                <li>Compatibility score plus a simple strengths / frictions breakdown.</li>
+                <li>More detailed views are in active development.</li>
+              </ul>
+            </article>
+
+            <!-- Calendar & journaling -->
+            <article class="feature-block">
+              <h3 class="feature-title">
+                <span class="emoji">🗓️</span>
+                Dual calendars & cosmic journaling
+              </h3>
+              <p class="feature-text">
+                See time in layers — Gregorian, lunar and your own notes.
+              </p>
+              <ul class="feature-list">
+                <li>Gregorian and lunar/Babylonian views tied to Moon cycles.</li>
+                <li>Journal entries with text & photos.</li>
+                <li>Track mood and momentum to spot patterns across cycles.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag">No astrology APIs</span>
+            <span class="tag">No cloud storage of your chart</span>
+            <span class="tag">No background location</span>
+            <span class="tag">All future updates included</span>
+          </div>
+
+          <div class="who-for">
+            <strong>Who AstroCycles is for:</strong>
+            seekers, stargazers, creatives, empaths, and anyone who can feel that life moves in patterns —
+            and wants a grounded way to track them.
+          </div>
+
+          <p class="data-line">
+            Data safety: core calculations run locally on your device. Analytics & ads respect the Play Store
+            data-safety rules; see the in-app privacy notice and
+            <a href="https://astrocycles.uk/privacy" target="_blank" rel="noopener">full privacy policy</a>.
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 
