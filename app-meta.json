@@ -1,9 +1,9 @@
 {
   "android": {
-    "latestVersionCode": 36,
+    "latestVersionCode": 38,
     "minVersionCode": 21,
     "forceFrom": 0,
-    "message": "Direct planets added to retro info",
+    "message": "Planetary chart added to Today's Sky",
     "storeUrl": "https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
   },
   "metaUpdated": "2025-12-01T16:00:00Z"
