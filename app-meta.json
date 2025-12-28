@@ -1,6 +1,6 @@
 {
   "android": {
-    "latestVersionCode": 38,
+    "latestVersionCode": 40,
     "minVersionCode": 21,
     "forceFrom": 0,
     "message": "Planetary chart added to Today's Sky",
