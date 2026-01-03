@@ -1,6 +1,6 @@
 {
   "android": {
-    "latestVersionCode": 40,
+    "latestVersionCode": 41,
     "minVersionCode": 21,
     "forceFrom": 0,
     "message": "bug fixes & improvements",
