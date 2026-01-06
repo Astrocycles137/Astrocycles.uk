@@ -1,9 +1,9 @@
 {
   "android": {
-    "latestVersionCode": 41,
+    "latestVersionCode": 42,
     "minVersionCode": 21,
     "forceFrom": 0,
-    "message": "bug fixes & improvements",
+    "message": "Relationship Compatibility Update",
     "storeUrl": "https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
   },
   "metaUpdated": "2025-12-01T16:00:00Z"
