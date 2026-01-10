@@ -1,9 +1,9 @@
 {
   "android": {
-    "latestVersionCode": 42,
+    "latestVersionCode": 44,
     "minVersionCode": 21,
     "forceFrom": 0,
-    "message": "Relationship Compatibility Update",
+    "message": "Tarot Improvements & bug fixes",
     "storeUrl": "https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
   },
   "metaUpdated": "2025-12-01T16:00:00Z"
