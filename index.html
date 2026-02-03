@@ -297,6 +297,36 @@
       color: rgba(200, 196, 255, 0.75);
     }
 
+    /* NEW: Support link under QR */
+    .support-link {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(167, 139, 250, 0.32);
+      background: rgba(10, 8, 32, 0.9);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.88rem;
+      line-height: 1.2;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+      transition: transform 0.08s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .support-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 4px var(--ring), 0 14px 30px rgba(0, 0, 0, 0.35);
+      border-color: rgba(167, 139, 250, 0.55);
+    }
+    .support-link:active {
+      transform: translateY(1px);
+    }
+    .support-link .heart {
+      filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.25));
+    }
+
     /* Sections */
     .sections {
       margin-top: 18px;
@@ -534,6 +564,18 @@
               </a>
               <div class="caption">Scan to go to Google Play</div>
               <div class="tiny-note">Android · Free · Contains ads</div>
+
+              <!-- NEW: Buy Me a Coffee link (under QR code) -->
+              <a
+                class="support-link"
+                href="https://buymeacoffee.com/astrocycles"
+                target="_blank"
+                rel="noopener"
+                aria-label="Buy me a coffee to support the project"
+              >
+                <span class="heart" aria-hidden="true">☕</span>
+                Buy me a coffee to support the project!
+              </a>
             </div>
           </div>
         </div>
