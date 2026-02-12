@@ -1,9 +1,9 @@
 {
   "android": {
-    "latestVersionCode": 44,
+    "latestVersionCode": 46,
     "minVersionCode": 21,
     "forceFrom": 0,
-    "message": "Tarot Improvements & bug fixes",
+    "message": "Ads removed from Tarot :)",
     "storeUrl": "https://play.google.com/store/apps/details?id=io.github.astrocycles137.astrocycles"
   },
   "metaUpdated": "2025-12-01T16:00:00Z"
